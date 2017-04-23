@@ -1,0 +1,98 @@
+// Boris Caraballo Sorting hw
+import java.util.Random;
+public class LinkedList {
+ private Node head, prev, curr;
+ private int size;
+ Random number = new Random();
+ 
+ // Constructor
+ public LinkedList()
+ {
+  head = null;
+  size = 0;
+ }
+ private boolean isEmpty()
+ {
+  if (head == null)
+   return true;
+   else 
+   return false;
+ }
+ //add method
+ public void add(int newNumber)
+ {
+  if (isEmpty())
+  {
+   Node newNode = new Node (newNumber);
+   head = newNode;
+   size++;
+  }
+  else
+  {
+   curr = head;
+   prev = null;
+   for (int i = 0; i< size; i++)
+   {
+    while (curr !=null && curr.getNext() != null)
+    {
+     if (curr.getNumber() ==newNumber || curr.getNext().getNumber() == newNumber)
+      newNumber = number.nextInt();
+     prev = curr;
+     curr = curr.getNext();
+    }
+   }
+   Node newNode = new Node (newNumber, null);
+   curr.setNext(newNode);
+   size++;
+  }
+ }
+ public int size()
+ {
+  return size;
+ }
+ 
+ // print method
+ public String printList()
+ {
+  curr = head;
+  String result = "";
+  int serialNumber = 1;
+  while (curr != null)
+  {
+   result += "[" + serialNumber + "]" + curr.getNumber() +"";
+   curr = curr.getNext();
+   serialNumber++;
+  }
+  return result;
+ }
+ 
+ // Bubble sort method
+ public void bubbleSort()
+ {
+  if (isEmpty())
+   System.out.println("List is empty.");
+  else
+  {
+  curr = head;
+  boolean swap = true;
+  while (swap)
+  {
+   swap = false;
+   while (curr != null)
+   {
+    if (curr.getNext() != null && curr.getNumber() > curr.getNext().getNumber())
+    {
+     int temp = curr.getNumber();
+     curr.setNumber(curr.getNext().getNumber());
+     curr.getNext().setNumber(temp);
+     swap = true;
+    }
+    curr = curr.getNext();
+   }
+   curr = head;
+  }
+  }
+   
+  }
+ }
+ 
