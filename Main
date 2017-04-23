@@ -1,0 +1,32 @@
+// Boris Caraballo Sorting hw// 
+
+import java.util.Random;
+import java.util.Scanner;
+public class Main {
+ public static void main(String[] args)
+ {
+  Scanner sc = new Scanner (System.in);
+  Random number = new Random();
+  int n;
+  System.out.println("How many random numbers do you want?");
+  // controls the list size
+  int listSize = sc.nextInt();
+  System.out.println("In your list," + listSize +" numbers. ");
+  
+  LinkedList newList = new LinkedList();
+  
+  // add random number into list
+  for(int i= 0; i<listSize; i++)
+  {
+   n = number.nextInt(50);
+   newList.add(n);
+  }
+  
+  System.out.println("All unsorted random numbers are : \n" +newList.printList());
+  System.out.println("Sorting numbers.... Please wait");
+  newList.bubbleSort();
+  
+  System.out.println("sorted list is : \n" +newList.printList());
+ }
+}
+  thats all :)
